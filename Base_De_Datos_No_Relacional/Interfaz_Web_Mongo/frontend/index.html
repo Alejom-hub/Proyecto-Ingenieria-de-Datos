@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lynx Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pantalla de Login -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-box">
+                <h2>Iniciar Sesión - Lynx Club</h2>
+                <form id="loginForm">
+
+                    
+                    <div class="form-group">
+                        <label for="usuario">Correo:</label>
+                        <input type="email" id="usuario" name="usuario" required>
+                        <small class="help-text">Ingresa tu correo electrónico</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clave">Contraseña:</label>
+                        <input type="password" id="clave" name="clave" required>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">Ingresar</button>
+                </form>
+                
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Principal (oculto inicialmente) -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <div class="sidebar">
+            <div class="user-info">
+                <h2>Lynx</h2>
+                <div id="user-welcome"></div>
+                <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" id="deportistas-link">Deportistas</a></li>
+                    <li><a href="#" id="entrenadores-link">Entrenadores</a></li>
+                    <li><a href="#" id="eventos-link">Eventos</a></li>
+                    <li><a href="#" id="horarios-link">Horarios</a></li>
+                    <li><a href="#" id="usuarios-link">Usuarios</a></li>
+                    <li><a href="#" id="categorias-link">Categorias</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main-content" id="main-content">
+            <h1>Bienvenido a Lynx</h1>
+            <p>Selecciona una opción del menú.</p>
+        </div>
+    </div>
+    
+    <!-- Modal para editar/agregar -->
+    <div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Editar</h2>
+        <form id="edit-form">
+        <div id="form-fields">
+            <!-- Aquí se generarán los campos dinámicamente -->
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="save-btn">Guardar</button>
+            <button type="button" class="cancel-btn">Cancelar</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+
+    <div class="main-content" id="main-content">
+        <!-- Controles CRUD (inicialmente ocultos) -->
+        <div id="crud-section" style="display: none;">
+            <div class="crud-controls">
+                <input type="text" id="search-input" placeholder="Buscar...">
+                <button id="search-btn">Buscar</button>
+                <button id="add-btn" class="add-btn">Agregar Nuevo</button>
+            </div>
+            
+            <!-- Aquí se mostrarán los datos -->
+            <div id="data-container"></div>
+        </div>
+        
+        <!-- Mensaje de bienvenida (se ocultará al seleccionar una sección) -->
+        <div id="welcome-message">
+            <h1>Bienvenido a Lynx</h1>
+            <p>Selecciona una opción del menú.</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

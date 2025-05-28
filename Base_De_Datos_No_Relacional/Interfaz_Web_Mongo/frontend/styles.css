@@ -1,0 +1,619 @@
+/* ================== RESET & GLOBAL ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(120deg, #fffbe7 0%, #ffe3e3 100%);
+    color: #222;
+    transition: background 0.5s;
+}
+
+/* ================== LOGIN SCREEN ================== */
+.login-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+.login-box {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.login-box h2 {
+    margin-bottom: 30px;
+    color: #8a6c6c;
+    font-size: 24px;
+}
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 8px #667eea33;
+}
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.login-btn:hover {
+    transform: translateY(-2px);
+}
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+}
+.message.success {
+    background: #d4edda;
+    color: #2e8041;
+    border: 1px solid #c3e6cb;
+}
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ================== SIDEBAR ================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: #fff;
+    border-right: 2px solid #ffe082;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 2px 0 16px rgba(229,115,115,0.07);
+    animation: slideInLeft 0.7s ease;
+}
+.sidebar h2 {
+    color: #e57373;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-shadow: 1px 2px 8px #ffd54f33;
+    transition: color 0.3s;
+}
+.sidebar ul {
+    list-style: none;
+    width: 100%;
+}
+.sidebar li {
+    margin-bottom: 22px;
+    width: 100%;
+}
+.sidebar a {
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    color: #222;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.sidebar a:hover,
+.sidebar a.active {
+    background: #ffe082;
+    color: #e57373;
+    transform: translateX(8px) scale(1.05);
+    box-shadow: 2px 2px 12px #ffd54f33;
+}
+
+/* ================== USER INFO & LOGOUT ================== */
+.user-info {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 2px solid #ffe082;
+    text-align: left;
+}
+.user-info #user-welcome {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.logout-btn {
+    background: linear-gradient(90deg, #ffd54f 60%, #e57373 100%);
+    color: #222;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 2px 8px #ffd54f33;
+}
+.logout-btn:hover {
+    background: linear-gradient(90deg, #e57373 60%, #ffd54f 100%);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ================== MAIN CONTENT ================== */
+.main-content {
+    margin-left: 260px;
+    padding: 48px 60px;
+    min-height: 100vh;
+    background: transparent;
+    animation: fadeIn 0.8s ease;
+}
+h1, h2 {
+    color: #e57373;
+    margin-bottom: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+p {
+    color: #444;
+    font-size: 1.1rem;
+}
+
+/* ================== TABLES ================== */
+.table-container {
+    overflow-x: auto;
+    margin-top: 24px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 4px 24px #ffd54f33;
+    padding: 18px;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.data-table thead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.data-table th {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.data-table tbody tr:hover {
+    background: #f5f5f5;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+.data-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* ================== BUTTONS & FORMS ================== */
+button, input, select, textarea {
+    border-radius: 8px;
+    border: 1px solid #ffe082;
+    padding: 10px 16px;
+    font-size: 1rem;
+    margin: 8px 0;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+    border: 1.5px solid #e57373;
+    box-shadow: 0 0 8px #ffd54f55;
+}
+button {
+    background: linear-gradient(90deg, #ffd54f 60%, #e57373 100%);
+    color: #222;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #ffd54f33;
+    transition: background 0.2s, transform 0.2s;
+}
+button:hover {
+    background: linear-gradient(90deg, #e57373 60%, #ffd54f 100%);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ================== SCROLLBAR ================== */
+::-webkit-scrollbar {
+    width: 8px;
+    background: #ffe08233;
+}
+::-webkit-scrollbar-thumb {
+    background: #ffd54f99;
+    border-radius: 8px;
+}
+
+/* ================== ANIMATIONS ================== */
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to   { transform: translateX(0);     opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 16px 8px;
+        position: static;
+        border-right: none;
+        border-bottom: 2px solid #ffe082;
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 24px 8px;
+    }
+    .crud-controls {
+        flex-direction: column;
+    }
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+/* ================== ANIMACIÓN DE BIENVENIDA ================== */
+.welcome-animation {
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255,255,255,0.95);
+    padding: 40px 60px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e57373;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 2000;
+    border: 3px solid #ffe082;
+}
+
+.welcome-animation.animate {
+    display: block;
+    animation: welcomeFadeInOut 2.5s ease-in-out forwards;
+}
+
+@keyframes welcomeFadeInOut {
+    0%   { 
+        opacity: 0; 
+        transform: translate(-50%,-60%) scale(0.8); 
+    }
+    20%  { 
+        opacity: 1; 
+        transform: translate(-50%,-50%) scale(1.1); 
+    }
+    80%  { 
+        opacity: 1; 
+        transform: translate(-50%,-50%) scale(1.0); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%,-40%) scale(0.8); 
+    }
+}
+
+/* ================== BADGES ================== */
+/* Badge para tipos de usuario */
+.badge-tipo {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffd54f 60%, #e57373 100%);
+    color: #222;
+}
+
+/* Badge específico para categorías de entrenadores */
+.categoria-badge {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #4caf50 60%, #2e7d32 100%);
+    color: white;
+    text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+}
+
+/* ================== MODAL Y FORMULARIOS ================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    animation: modalSlideUp 0.4s ease-out;
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #e57373;
+    transition: transform 0.2s;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+#modal-title {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: #e57373;
+    border-bottom: 2px solid #ffe082;
+    padding-bottom: 10px;
+}
+
+.form-group textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group select {
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.save-btn, .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.save-btn {
+    background: linear-gradient(90deg, #4caf50 60%, #2e7d32 100%);
+    color: white;
+}
+
+.cancel-btn {
+    background: linear-gradient(90deg, #f44336 60%, #c62828 100%);
+    color: white;
+}
+
+.save-btn:hover, .cancel-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================== CONTROLES CRUD ================== */
+.crud-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #ffd54f33;
+}
+
+.crud-controls input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+    background: #fffef9;
+}
+
+.crud-controls button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+#search-btn {
+    background: linear-gradient(90deg, #667eea 60%, #764ba2 100%);
+    color: white;
+}
+
+.add-btn {
+    background: linear-gradient(90deg, #4caf50 60%, #2e7d32 100%);
+    color: white;
+}
+
+/* ================== BOTONES DE ACCIÓN EN TABLA ================== */
+.edit-btn, .delete-btn {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.edit-btn {
+    background: linear-gradient(90deg, #ffc107 60%, #ff9800 100%);
+    color: #333;
+}
+
+.delete-btn {
+    background: linear-gradient(90deg, #f44336 60%, #c62828 100%);
+    color: white;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ================== MENSAJES DE ESTADO Y ALERTAS ================== */
+.alert {
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    position: relative;
+    animation: fadeIn 0.5s;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid #4caf50;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #f44336;
+}
+
+.alert-info {
+    background-color: #e0f7fa;
+    color: #0288d1;
+    border-left: 5px solid #29b6f6;
+}
+
+/* Estilo para etiquetas en tablas */
+.tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 5px;
+}
+
+.tag-active {
+    background-color: #4caf50;
+}
+
+.tag-inactive {
+    background-color: #f44336;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 16px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    animation: slideDown 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
